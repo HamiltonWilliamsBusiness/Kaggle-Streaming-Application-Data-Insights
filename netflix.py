@@ -1,4 +1,5 @@
 import pypyodbc as odbc # pip install pypyodbc
+import numpy as np # pip install numpy
 
 DRIVER_NAME =   "SQL SERVER"
 SERVER_NAME = "LAPTOP-KBAD6AQA\SQLEXPRESS"
@@ -27,8 +28,24 @@ try:
 
     # Fetch and print results
     rows = cursor.fetchall()
-    for row in rows:
-        print(row)
+
+    # Convert tuples to numpy arrays
+    arrays = [np.array(row) for row in rows]
+
+    # Now 'arrays' contains arrays that you can modify
+
+    # Printing out all the rows
+    # for arr in arrays:
+    #     print(arr)
+    # print(arrays)
+
+    for arr in arrays[:10]:
+        print(arr)
+
+    # Print all the tuples
+    # for row in rows:
+    #     print(row)
+    # print(rows)
 
 except odbc.Error as e:
     print(f"Error: {e}")
