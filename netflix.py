@@ -32,20 +32,15 @@ try:
     # Convert tuples to numpy arrays
     arrays = [np.array(row) for row in rows]
 
-    # Now 'arrays' contains arrays that you can modify
+    # Remove elements at indices 1, 2, and 3 from each array
+    modified_arrays = [np.delete(arr, [1, 2, 3]) for arr in arrays]
 
-    # Printing out all the rows
-    # for arr in arrays:
-    #     print(arr)
-    # print(arrays)
+    # Columns still within a row
+    print("User_ID index 0, Duration_Watched_Minutes index 1, Genre index 2, Country index 3, Age index 4, Gender index 5, Subscription_Status index 6, Ratings index 7, Languages index 8, Device_Type index 9, Location index 10, Playback_Quality index 11, Interaction_Events index 12")
 
-    for arr in arrays[:10]:
-        print(arr)
-
-    # Print all the tuples
-    # for row in rows:
-    #     print(row)
-    # print(rows)
+    # Print the modified arrays
+    for modified_arr in modified_arrays[:10]:
+        print(modified_arr)
 
 except odbc.Error as e:
     print(f"Error: {e}")
