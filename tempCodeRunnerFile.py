@@ -1,0 +1,1 @@
+modified_arrays = [np.delete(arr, [1, 2, 3]) for arr in arrays]

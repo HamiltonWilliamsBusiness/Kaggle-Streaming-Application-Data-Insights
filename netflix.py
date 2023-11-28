@@ -34,11 +34,11 @@ try:
     arrays = [np.array(row) for row in rows]
 
     # Remove elements at indices 1, 2, and 3 from each array
-    modified_arrays = [np.delete(arr, [1, 2, 3]) for arr in arrays]
+    # modified_arrays = [np.delete(arr, [1, 2, 3]) for arr in arrays]
 
     # Create a DataFrame from the modified arrays
-    columns = ["User_ID", "Device_ID", "Video_ID", "Genre","", "Age", "Gender", "Subscription_Status", "Ratings", "Languages", "Device_Type", "Location", "Playback_Quality", "Interaction_Events"]
-    df = pd.DataFrame(modified_arrays, columns=columns)
+    columns = ["User_ID", "Session_ID", "Device_ID", "Video_ID", "Genre", "Country", "Age", "Gender", "Subscription_Status", "Ratings", "Languages", "Device_Type", "Location", "Playback_Quality", "Interaction_Events", ""]
+    df = pd.DataFrame(arrays, columns=columns)
 
     # Print the DataFrame
     print(df.head())
