@@ -1,7 +1,9 @@
-import pypyodbc as odbc # pip install pypyodbc
-import numpy as np # pip install numpy
+import pypyodbc as odbc
+import numpy as np
+import pandas as pd
 
-DRIVER_NAME =   "SQL SERVER"
+# Your connection details
+DRIVER_NAME = "SQL SERVER"
 SERVER_NAME = "LAPTOP-KBAD6AQA\SQLEXPRESS"
 DATABASE_NAME = 'Netflix'
 
@@ -13,7 +15,6 @@ connection_string = f"""
 """
 
 conn = odbc.connect(connection_string)
-print(conn)
 
 try:
     # Establish a connection
@@ -35,12 +36,12 @@ try:
     # Remove elements at indices 1, 2, and 3 from each array
     modified_arrays = [np.delete(arr, [1, 2, 3]) for arr in arrays]
 
-    # Columns still within a row
-    print("User_ID index 0, Duration_Watched_Minutes index 1, Genre index 2, Country index 3, Age index 4, Gender index 5, Subscription_Status index 6, Ratings index 7, Languages index 8, Device_Type index 9, Location index 10, Playback_Quality index 11, Interaction_Events index 12")
+    # Create a DataFrame from the modified arrays
+    columns = ["User_ID", "Device_ID", "Video_ID", "Genre","", "Age", "Gender", "Subscription_Status", "Ratings", "Languages", "Device_Type", "Location", "Playback_Quality", "Interaction_Events"]
+    df = pd.DataFrame(modified_arrays, columns=columns)
 
-    # Print the modified arrays
-    for modified_arr in modified_arrays[:10]:
-        print(modified_arr)
+    # Print the DataFrame
+    print(df.head())
 
 except odbc.Error as e:
     print(f"Error: {e}")
